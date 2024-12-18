@@ -71,11 +71,11 @@ goto commonexit
 :mode3
 set /P target="target directory path: "
 set /P ret="to: "
-set ret=%ret%ENDING
+set ret=%retOR%ENDING
 set ret=%ret:^"=%
 set targetexc=%target::=%
 set targetvalid=%targetexc:^"=%
-if %ret%==ENDING ( set ret="D:\temp\file_editor\%targetvalid%"ENDING )
+if %ret%==ENDING ( set ret="D:\temp\file_editor\%targetvalid%\"ENDING )
 set ret=%ret:~0,-7%
 
 if not EXIST %target% (
@@ -85,10 +85,10 @@ if not EXIST %target% (
 if not EXIST %ret% ( mkdir %ret% )
 
 @REM same as mode 2, but require manual replace later to allow advance manipulations before putting back
-xcopy /V/C/H/R %target% %ret%
+xcopy /V/C/H/R/E %target% %ret%
 explorer.exe "%ret%"
-echo copied contents in %targetvalid% to %ret%
-echo to replace original content, copy content from %ret% to %targetvalid% instead
+echo copied contents in %target% to %ret%
+echo to replace original content, copy content from %ret% to %target% instead
 goto commonexit
 
 @REM end
