@@ -74,7 +74,7 @@ set /P ret="to: "
 set ret=%retOR%ENDING
 set ret=%ret:^"=%
 set targetexc=%target::=%
-set targetvalid=%targetexc:^"=%
+set targetvalid=%targetexc:^"=%\
 if %ret%==ENDING ( set ret="D:\temp\file_editor\%targetvalid%\"ENDING )
 set ret=%ret:~0,-7%
 
